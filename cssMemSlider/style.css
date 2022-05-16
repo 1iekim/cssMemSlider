@@ -1,0 +1,181 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: rgba(0, 0, 0, .9);
+  font-family: cursive;
+  color: #fff;
+  width: 100vw;
+  height: 100vh;
+  font-size: 2rem;
+  display: flex;
+  justify-content: center;
+}
+
+.container {
+  max-width: 768px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+header {
+  display: flex;
+  justify-content: center;
+}
+
+main {
+  flex-grow: 1;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  gap: 25px;
+}
+
+main > input {
+  display: none;
+}
+
+.slider__content {
+  max-width: 68%;
+}
+
+main label {
+  position: relative;
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  padding: 5px;
+  margin: 0 5px;
+  border-radius: 50%;
+  border: 3px rgb(43, 99, 204) solid;
+  background-color: rgb(43, 99, 204);
+
+  cursor: pointer;
+  transition: all .6s;
+}
+
+main label:hover {
+  border-color: #fff;
+  background-color: #fff;
+}
+
+#mem1:checked ~ .slider__navigation .slider__btn-1,
+#mem2:checked ~ .slider__navigation .slider__btn-2,
+#mem3:checked ~ .slider__navigation .slider__btn-3,
+#mem4:checked ~ .slider__navigation .slider__btn-4,
+#mem5:checked ~ .slider__navigation .slider__btn-5 {
+  background-color: transparent;
+}
+
+.slider {
+  width: 100%;
+  min-height: 580px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  overflow: hidden;
+}
+
+@keyframes imgChange {
+  from {
+    opacity: 0;
+    transform: translateX(500px) rotate(10deg);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0px) rotate(0deg);
+  }
+}
+
+@keyframes textAnim {
+  from {
+    opacity: 0;
+    transform: translateX(-25%) rotate(10deg) scale(0.5);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0%) rotate(0deg) scale(1);
+  }
+}
+
+.slider-img {
+  max-width: 768px;
+  object-fit: scale-down;
+  display: none;
+}
+
+#mem1:checked ~ .slider > .mem1,
+#mem2:checked ~ .slider > .mem2,
+#mem3:checked ~ .slider > .mem3,
+#mem4:checked ~ .slider > .mem4,
+#mem5:checked ~ .slider > .mem5 {
+  display: block;
+  animation: imgChange .5s ease-out 1;
+}
+
+.mem__text {
+  display: none;
+}
+
+#mem1:checked ~ .slider__content > .text1,
+#mem2:checked ~ .slider__content > .text2,
+#mem3:checked ~ .slider__content > .text3,
+#mem4:checked ~ .slider__content > .text4,
+#mem5:checked ~ .slider__content > .text5 {
+  display: block; 
+  animation: textAnim .5s steps(10,end) 1;
+}
+
+footer {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.footer__link {
+  text-decoration: none;
+  color: hsl(0, 0%, 100%);
+  transition: all .7s;
+}
+
+.footer__link:hover {
+  color: hsl(0, 9%, 44%);
+}
+
+@media (max-width: 790px) {
+  body {
+    font-size: 1.5rem;
+  }
+
+  main {
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 15px;
+  }
+
+  .mem__title {
+    margin-bottom: 30px;
+  }
+
+  .slider__content {
+    order: 1;
+    align-self: flex-start;
+    padding-left: .5em;
+    flex-grow: 1;
+  }
+
+  .slider {
+    min-height: 25%;
+    flex-grow: 1;
+  }
+
+  .slider-img {
+    max-width: 80%;
+  }
+}
