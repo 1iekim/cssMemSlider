@@ -28,7 +28,6 @@ header {
 }
 
 main {
-  /* padding-top: 7%; */
   flex-grow: 1;
   display: flex;
   flex-wrap: wrap;
